@@ -10,4 +10,8 @@
 //
 const API = 'https://rickandmortyapi.com/api/character';
 
-export const getCharacters = () => fetch(API)
+//https://rickandmortyapi.com/api/character/?status=alive
+const data = {status:'dead', gender:'female'};
+
+export const getCharacters = () => fetch(`${API}?status=${encodeURIComponent(data.status)}&gender=${encodeURIComponent(data.gender)}`)
+export const getCharacter = (id) => fetch(`${API}/${id}`)

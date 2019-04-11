@@ -10,6 +10,8 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 
+import { Link } from "react-router-dom";
+
 class Posts extends React.Component {
     constructor(props) {
         super(props);
@@ -24,8 +26,6 @@ class Posts extends React.Component {
           .then(posts => this.setState({ posts: posts.results }));
       }
 
-
-
     render() {
         const {posts} = this.state;
         //console.log(posts.results);
@@ -39,20 +39,22 @@ class Posts extends React.Component {
                 <Row>
                     {//posts.results &&
                         posts.map(post =>
-                            <Col lg={4}>
-                            
+                            <Col key={post.id} lg={4}>
                                 <Card>
                                 <PostImage className="card-img-top" post={post} />
                                 {/* <Card.Img variant="top" src={post.image} /> */}
                                 <Card.Body>
                                     <Card.Title>{post.name}</Card.Title>
                                 </Card.Body>
-                                <ListGroup className="list-group-flush">
+                                {/* <ListGroup className="list-group-flush">
                                     <ListGroupItem>species: {post.species}</ListGroupItem>
                                     <ListGroupItem>status: {post.status}</ListGroupItem>
                                     <ListGroupItem>origin: {post.origin.name}</ListGroupItem>
                                     <ListGroupItem>location: {post.location.name}</ListGroupItem>
-                                </ListGroup>
+                                </ListGroup> */}
+                                <Card.Body>
+                                    <Link to={`post/${post.id}`}>view post</Link>
+                                </Card.Body>
                                 </Card>
 
                             </Col>
