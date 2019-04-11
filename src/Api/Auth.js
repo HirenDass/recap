@@ -7,7 +7,7 @@
 //     credentials: 'include',
 //     body: JSON.stringify({ password, email })
 //   })
-//
+
 const API = 'https://rickandmortyapi.com/api/character';
 
 export const getCharacters = () => fetch(API)
